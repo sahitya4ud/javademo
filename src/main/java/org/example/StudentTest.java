@@ -15,7 +15,7 @@ public class StudentTest {
 
         Employee employee1 = new Employee();
          employee1.name = "sahitya";
-         employee1.age = 12;
+         employee1.age = 22;
          employee1.employeeId = "1";
          employee1.designation = "senior";
          employee1.city = "kadapa";
