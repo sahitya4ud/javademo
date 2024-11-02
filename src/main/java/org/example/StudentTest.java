@@ -35,6 +35,12 @@ public class StudentTest {
         company1.state = "tg";
         System.out.println("Company Name" + company1.name);
 
+Employee2 employee= new Employee2();
+boolean test=employee.addition();
+        System.out.println("test");
+
+       boolean eligible= employee.addition();
+        System.out.println(eligible);
 
     }
 
