@@ -9,6 +9,8 @@ public class Payment {
 
      private String status;
      private Date transactionDate;
+    public  static double limitCount;
+    private String amount;
 
     public String getTransactionId() {
         return transactionId;
@@ -40,5 +42,22 @@ public class Payment {
 
     public void setTransactionDate(Date transactionDate) {
         this.transactionDate = transactionDate;
+
+    }
+
+    public static double getLimitCount() {
+        return limitCount;
+    }
+
+    public static void setLimitCount(double limitCount) {
+        Payment.limitCount = limitCount;
+    }
+
+    public String getAmount() {
+        return amount;
+    }
+
+    public void setAmount(String amount) {
+        this.amount = amount;
     }
 }

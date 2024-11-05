@@ -25,42 +25,19 @@ public class PhonePay implements UPIPayments {
 
         }
     };
-    Predicate<Payment> isSuccess = payment -> {
 
-        if(PaymentStatusEnum.SUCCESS.getLabel().equals(payment.getStatus())){
-            return true;
-        }else{
-            return false;
-
-
-        }
-    };
 
 
        @Override
         public Payment transfer(String fromMobileNumber, String toNumber, Double amount) {
 
            Payment p = new Payment();
-           if(amount == null || amount <=0) {
 
-               p.setStatus(PaymentStatusEnum.FAILED.getLabel());
-               p.setTransactionId(UUID.randomUUID().toString());
-               p.setUter(UUID.randomUUID().toString());
-               p.setTransactionDate(new Date());
-               return p;
-
-
-           }
-          if(!isWithinDailyLimit(fromMobileNumber,amount)){
-               p.setStatus(PaymentStatusEnum.FAILED.getLabel());
-               p.setTransactionId(UUID.randomUUID().toString());
-               p.setUter(UUID.randomUUID().toString());
-               p.setTransactionDate(new Date());
-               return p;
-           }
 
 
           if  (balanceCheck.test(fromMobileNumber,amount))  {
+
+             if(dailyLimitCheck.test(fromMobileNumber,amount))
 
         Double fromAccountBalance = accountBalanceMap.get(fromMobileNumber);
         Double toAccountBalance = accountBalanceMap.get(toNumber);
@@ -74,6 +51,8 @@ public class PhonePay implements UPIPayments {
               p.setTransactionId(UUID.randomUUID().toString());
               p.setUter(UUID.randomUUID().toString());
               p.setTransactionDate(new Date());
+              p.setAmount(amount);
+
 
     }else {
 

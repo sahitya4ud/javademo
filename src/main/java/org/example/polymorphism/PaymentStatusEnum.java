@@ -4,8 +4,8 @@ public enum PaymentStatusEnum {
 
     SUCCESS(   "Transaction is success"),
     FAILED(     "Transaction is failed"),
-    PENDING(    "Transaction is in-progress");
-
+    PENDING(    "Transaction is in-progress"),
+    lIMIT_EXCEED(" payment failed due to limit exceed");
     private String label;
 
     PaymentStatusEnum(String  label) {
