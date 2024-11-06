@@ -16,7 +16,7 @@ public abstract class SbiTransferService implements RBIPayment{
 
     protected abstract boolean transactionLimitCheck(Account account, Double amount);
 
-    public abstract class SbiTransferService implements RBIPayment{
+
 
         public  static Map<String,Account>  accountMap = new HashMap<>();
 
@@ -24,17 +24,28 @@ public abstract class SbiTransferService implements RBIPayment{
 
         BiPredicate<String,Double>balanceCheck = (accountNumber, amt) -> {
             Account accountBalance = SBIAccountDBService.accountMap.get(accountNumber);
-            if(accountBalance != null && accountBalance.getBalance()> amt){
+            if (accountBalance != null && accountBalance.getBalance() > amt) {
                 return true;
 
 
-            }else {
+            } else {
                 return false;
+            }
+        };
+            public Boolean balanceCheck(String accountNumber,Double amount){
+                Account accountBalance = SBIAccountDBService.accountMap.get(accountNumber);
+                if(accountBalance != null && accountBalance.getBalance()> amount){
+                    return true;
+
+
+                }else {
+                    return false;
+                }
             }
 
 
 
-        };
+
               Function<Double,Payment> errorSupplier = (amount)->{
                   Payment p = new Payment();
                   p.setStatus(PaymentStatusEnum.FAILED.getLabel());
@@ -46,14 +57,14 @@ public abstract class SbiTransferService implements RBIPayment{
               };
 
 
-         protected abstract boolean transactionLimitCheck(Account account,Double amount);
+
 
         @Override
         public Payment transfer(String fromAccount, String toAccount, Double amount) {
             Payment p = new Payment();
-            if(balanceCheck.test(fromAccount,amount)) {
+            if (balanceCheck.test(fromAccount, amount)) {
                 Account account = SBIAccountDBService.accountMap.get(fromAccount);
-                if(this.transactionLimitCheck(account,amount)){
+                if (this.transactionLimitCheck(account, amount)) {
                     p.setStatus(PaymentStatusEnum.SUCCESS.getLabel());
                     p.setTransactionId(UUID.randomUUID().toString());
                     p.setUter(UUID.randomUUID().toString());
@@ -62,10 +73,10 @@ public abstract class SbiTransferService implements RBIPayment{
                     return p;
 
                 }
-            }else {
+            } else {
                 return errorSupplier.apply(amount);
             }
-
+            return p;
         }
     }
-}
+

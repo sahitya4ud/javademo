@@ -10,7 +10,7 @@ public class Payment {
      private String status;
      private Date transactionDate;
     public  static double limitCount;
-    private String amount;
+    private double amount;
 
     public String getTransactionId() {
         return transactionId;
@@ -53,11 +53,11 @@ public class Payment {
         Payment.limitCount = limitCount;
     }
 
-    public String getAmount() {
+    public Double getAmount() {
         return amount;
     }
 
-    public void setAmount(String amount) {
+    public void setAmount(Double amount) {
         this.amount = amount;
     }
 }
