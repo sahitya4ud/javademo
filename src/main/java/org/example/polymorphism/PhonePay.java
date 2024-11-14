@@ -2,7 +2,7 @@ package org.example.polymorphism;
 
 import java.util.*;
 import java.util.function.BiPredicate;
-import java.util.function.Predicate;
+
 
 public class PhonePay implements UPIPayments {
  public  static  Map<String,Double> accountBalanceMap = new HashMap<>();
@@ -37,7 +37,7 @@ public class PhonePay implements UPIPayments {
 
           if  (balanceCheck.test(fromMobileNumber,amount))  {
 
-             if(dailyLimitCheck.test(fromMobileNumber,amount))
+
 
         Double fromAccountBalance = accountBalanceMap.get(fromMobileNumber);
         Double toAccountBalance = accountBalanceMap.get(toNumber);

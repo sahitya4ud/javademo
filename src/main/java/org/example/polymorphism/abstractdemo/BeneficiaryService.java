@@ -5,7 +5,7 @@ import java.util.ArrayList;
 public class BeneficiaryService {
 
 
-    Beneficiary addBeneficiary(Beneficiary beneficiary){
+   Beneficiary addBeneficiary(Beneficiary beneficiary,Account account){
         ArrayList<Beneficiary>beneficiaryArrayList = SBIAccountDBService.accountBeneficiaryMap.get(account.getAccount());
         if(beneficiaryArrayList != null) {
             beneficiaryArrayList.add(beneficiary);

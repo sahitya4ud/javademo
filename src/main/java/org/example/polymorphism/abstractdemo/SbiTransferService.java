@@ -2,6 +2,8 @@ package org.example.polymorphism.abstractdemo;
 
 import org.example.polymorphism.Payment;
 import org.example.polymorphism.PaymentStatusEnum;
+import org.example.polymorphism.customcheckedexception.InsufficientBalanceException;
+import org.example.polymorphism.enumdemo.TransferEnum;
 
 import java.util.Date;
 import java.util.HashMap;
@@ -60,7 +62,8 @@ public abstract class SbiTransferService implements RBIPayment{
 
 
         @Override
-        public Payment transfer(String fromAccount, String toAccount, Double amount) {
+        public Payment transfer(String fromAccount, String toAccount, Double amount) throws InsufficientBalanceException {
+
             Payment p = new Payment();
             if (balanceCheck.test(fromAccount, amount)) {
                 Account account = SBIAccountDBService.accountMap.get(fromAccount);
@@ -74,7 +77,10 @@ public abstract class SbiTransferService implements RBIPayment{
 
                 }
             } else {
-                return errorSupplier.apply(amount);
+                throw new InsufficientBalanceException(TransferEnum.INSUFFICIENT_BALANCE.getCode(),TransferEnum.INSUFFICIENT_BALANCE.getLabel());
+            }
+            if(true){
+                System.out.println("even this if is executed even after insufficient balance as well");
             }
             return p;
         }
