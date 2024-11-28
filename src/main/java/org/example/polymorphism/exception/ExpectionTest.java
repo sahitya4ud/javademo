@@ -48,24 +48,23 @@ public class ExpectionTest {
         } finally {
             System.out.println("from finally calculateWithfinally1111");
 
-        }
-        public void calculateWithfinally(int numberofTicket) throws Exception {
+        }}
+       public void calculateWithfinally(int numberofTicket){
             String status = null;
             try{
                 System.out.println("Available"+PaymentService.seats);
                 PaymentService.seats=PaymentService.seats-numberofTicket;
                 System.out.println("Available"+PaymentService.seats);
                 PaymentService paymentService=new PaymentService();
-                status = paymentService.payment(numberofTicket);
+//                status = paymentService.payment(numberofTicket);
             }finally{
                 if(!"SUCCESS".equals(status)){
-                    PaymentService.seats=PaymentService.seats+numberofTicket;
-
+                    PaymentService.seats= PaymentService.seats+numberofTicket;
                 }
                 System.out.println("from finally calculateWithfinally1111");
                 System.out.println("post payment Available"+PaymentService.seats);
             }
         }
-        System.out.println("post finally block");
-    }
+//        System.out.println("post finally block");
+//    }
 }

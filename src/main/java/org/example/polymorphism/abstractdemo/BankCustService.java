@@ -23,14 +23,14 @@ public class BankCustService {
         System.out.println("with abstract factory"+account.getAccount());
 
           SbiTransferService neftsbiTransferService =  new  NEFTSBITransferServiceImpl();
-          Payment payment = neftsbiTransferService.transfer(account.getAccount(),"HDFC123",1500000.0);
+//          Payment payment = neftsbiTransferService.transfer(account.getAccount(),"HDFC123",1500000.0);
 
-        System.out.println("NEFT Payment status"+payment.getStatus());
+//        System.out.println("NEFT Payment status"+payment.getStatus());
 
         SbiTransferService rtgssbiTransferService =  new  RTGSSBITransferServiceImpl();
-        Payment rtgspayment = neftsbiTransferService.transfer(account.getAccount(),"HDFC123",900000.0);
+//        Payment rtgspayment = neftsbiTransferService.transfer(account.getAccount(),"HDFC123",900000.0);
 
 
-        System.out.println("RTGS Payment status"+rtgspayment.getStatus());
+//        System.out.println("RTGS Payment status"+rtgspayment.getStatus());
     }
 }
