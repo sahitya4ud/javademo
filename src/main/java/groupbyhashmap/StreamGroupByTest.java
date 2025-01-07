@@ -72,12 +72,12 @@ public class StreamGroupByTest {
           //  .collect(groupingBy(Employee::getDept, maxBy(Comparator.comparingDouble(Employee::getSalary)));
     //System.out.println(departmentmaxemp);
 
-        Map<String,Optional<Employee>> deptMaxEmp=itEmpList.stream().collect(
-                groupingBy(Employee::getDept,maxBy(Comparator.comparingDouble(Employee::getSalary))));
-
-    Map<String, Optional<Employee>> departmentLowemp = itEmpList.stream()
-            .collect(groupingBy(Employee::getDept, min(comparingDouble(Employee::getSalary)));
-    System.out.println(departmentLowemp);
+//        Map<String,Optional<Employee>> deptMaxEmp=itEmpList.stream().collect(
+//                groupingBy(Employee::getDept,maxBy(Comparator.comparingDouble(Employee::getSalary))));
+//
+//    Map<String, Optional<Employee>> departmentLowemp = itEmpList.stream()
+//            .collect(groupingBy(Employee::getDept, min(comparingDouble(Employee::getSalary)));
+//    System.out.println(departmentLowemp);
 
 
 

@@ -79,11 +79,11 @@ public class MapDemoTest {
             //filter
             //map
 
-            List<Emp> empListForPayroll = myEmployeeMap.entrySet().stream().filter( mapEntry -> {
-                return mapEntry.getValue().isStatus();
-            }).map(myEntry -> {
-
-            });
+//            List<Emp> empListForPayroll = myEmployeeMap.entrySet().stream().filter( mapEntry -> {
+//                return mapEntry.getValue().isStatus();
+//            }).map(myEntry -> {
+//
+//            });
 
             System.out.println(activeEmpCount);
 
